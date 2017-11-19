@@ -42,6 +42,7 @@ dependencies {
 	compile "org.springframework.security:spring-security-ldap:4.2.3.RELEASE"
 	compile "org.springframework.cloud:spring-cloud-starter:" + springCloudStarterVersion
     compile "org.springframework.cloud:spring-cloud-starter-eureka-server:" + springCloudStarterEurekaServerVersion
+    compile "org.springframework.social:spring-social-facebook:2.0.3.RELEASE"
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
    // implementation 'com.google.guava:guava:21.0'

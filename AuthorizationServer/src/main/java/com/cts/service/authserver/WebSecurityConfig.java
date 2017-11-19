@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -40,7 +39,10 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						(request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
 				.and()
 				.authorizeRequests()
-				.antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll();
+				.antMatchers("/signin/**","/signup/**").permitAll()
+				.antMatchers("/oauth/token").permitAll()
+				.anyRequest()
+				.authenticated();
 				//.antMatchers("/oauth/**").permitAll()
 				//.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 				//.anyRequest()
@@ -59,6 +61,8 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
        web.ignoring()
          .antMatchers(HttpMethod.OPTIONS);
      }
+	 
+	
 	
 	 
 }
